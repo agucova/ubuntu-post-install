@@ -6,7 +6,7 @@
 function fish_shell {
 	 chsh --shell $(which fish) $USER
 	 curl -L https://get.oh-my.fish | fish
-	 fish -c "omf update; and omf install l; and omf theme l; and mkdir ~/.config/fish; and set -U fish_user_paths ~/anaconda3/bin $fish_user_paths"
+	 fish -c "omf update; and omf install l; and omf theme l; and mkdir ~/.config/fish"
 	 echo "if status --is-interactive ; screenfetch -w; end" > ~/.config/fish/config.fish
 }
 function gsettings_config {
