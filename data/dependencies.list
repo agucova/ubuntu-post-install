@@ -3,3 +3,5 @@ software-properties-common
 wget
 whiptail
 xterm
+aria2
+git
