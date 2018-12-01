@@ -2,6 +2,13 @@
 
 # Automatically set preferred gsettings keys as outlined in the 'gsettings.list' file
 # 'gsettings' can be obtained by executing "dconf watch /" and then manually changing settings
+# Default to fish shell
+function fish_shell {
+	 chsh --shell $(which fish) $USER
+	 curl -L https://get.oh-my.fish | fish
+	 fish -c "omf update; and omf install l; and omf theme l; and mkdir ~/.config/fish; and set -U fish_user_paths ~/anaconda3/bin $fish_user_paths"
+	 echo "if status --is-interactive ; screenfetch -w; end" > ~/.config/fish/config.fish
+}
 function gsettings_config {
 	echo_message info "Setting preferred application-specific & desktop settings..."
 	# Variables
@@ -67,6 +74,7 @@ function system_configure {
 		'disable_crash_dialogs'     'Disable error report dialogs (apport)' \
 		'gsettings_config'          'Set preferred application & desktop settings' \
 		'hide_snap_folder'          'Hide the snap folder in user home' \
+		'fish_shell' \
 		3>&1 1>&2 2>&3)
 	# check exit status
 	if [ $? = 0 ]; then
